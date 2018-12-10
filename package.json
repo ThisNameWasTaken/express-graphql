@@ -1,0 +1,24 @@
+{
+  "name": "GraphQL",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "start:json": "json-server --watch customers.json"
+  },
+  "keywords": [],
+  "author": "Adrian Dinca",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "json-server": "^0.14.0",
+    "node-fetch": "^2.3.0",
+    "nodemon": "^1.18.7"
+  }
+}
