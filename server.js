@@ -2,27 +2,11 @@ const express = require('express');
 const expressGraphQL = require('express-graphql');
 const { buildSchema } = require('graphql');
 const fetch = require('node-fetch');
+const { readFileSync } = require('fs');
 
 const graphql = args => args[0];
 
-const schema = buildSchema(graphql`
-    type Query {
-        allCustomers(last: Int): [Customer!]!
-    }
-
-    type Mutation {
-        createCustomer(name: String!, age: Int!, email: String!): Customer!
-        updateCustomer(id: ID!, name: String!, age: Int!, email: String!): Customer!
-        deleteCustomer(id: ID!): Customer!
-    }
-
-    type Customer {
-        id: ID!
-        name: String!
-        email: String!
-        age: Int!
-    }
-`);
+const schema = buildSchema(readFileSync('./schema.gql', 'utf8'));
 
 const resolvers = {
     allCustomers: args => fetch('http://localhost:3000/customers').then(res => res.json()),
